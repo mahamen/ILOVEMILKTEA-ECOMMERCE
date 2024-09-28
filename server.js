@@ -1,13 +1,10 @@
 const express = require('express');
 const path = require('path');
 const app = express();
-const PORT = process.env.PORT || 3001;
+const PORT = process.env.PORT || 3000;
 
-// Serve static files from the public folders
-app.use('/css', express.static(path.join(__dirname, 'css')));
-app.use('/img', express.static(path.join(__dirname, 'img')));
-app.use('/js', express.static(path.join(__dirname, 'js')));
-app.use('/lib', express.static(path.join(__dirname, 'lib')));
+// Serve static files from the public folder
+app.use(express.static(path.join(__dirname, 'public')));
 
 // Define routes for each HTML page
 app.get('/', (req, res) => {
@@ -56,5 +53,5 @@ app.get('/userprofile', (req, res) => {
 
 // Start the server
 app.listen(PORT, () => {
-    console.log(`Server is running on http://localhost:${PORT}`);
+    console.log('Server is running on http://localhost:${PORT}');
 });
